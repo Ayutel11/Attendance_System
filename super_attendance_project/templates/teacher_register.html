@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Teacher Registration</h1>
+  <form method="post" class="form">
+    <label>Full Name
+      <input type="text" name="name" required>
+    </label>
+    <label>Email
+      <input type="email" name="email" required>
+    </label>
+    <label>Password
+      <input type="password" name="password" required>
+    </label>
+    <label>Department
+      <input type="text" name="department" placeholder="e.g. Computer" required>
+    </label>
+    <button type="submit" class="btn">Register</button>
+  </form><link rel="stylesheet" href="styles.css">
+{% endblock %}

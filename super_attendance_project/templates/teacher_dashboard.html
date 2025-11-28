@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Teacher Dashboard</h1>
+  <div class="card">
+    <h2>Create Attendance Sheet</h2>
+    <form method="get" class="form">
+      <label>Date
+        <input type="date" name="date" value="{{ request.args.get('date', '') }}" required>
+      </label>
+      <label>Subject
+        <input type="text" name="subject" value="{{ request.args.get('subject', '') }}" required>
+      </label>
+      <label>Lecture No
+        <input type="number" name="lecture_no" value="{{ request.args.get('lecture_no', '') }}" required>
+      </label>
+      <label>Semester
+        <input type="text" name="sem" value="{{ request.args.get('sem', '') }}" required>
+      </label>
+      <label>Stream
+        <input type="text" name="stream" value="{{ request.args.get('stream', '') }}" required>
+      </label>
+      <label>Division
+        <input type="text" name="division" value="{{ request.args.get('division', '') }}" required>
+      </label>
+      <button type="submit" class="btn">Load Students</button>
+    </form>
+  </div>
+
+  {% if students is not none %}
+    <div class="card">
+      <h2>Mark Attendance</h2>
+      {% if students %}
+        <form method="post">
+          <input type="hidden" name="date" value="{{ request.args.get('date') }}">
+          <input type="hidden" name="subject" value="{{ request.args.get('subject') }}">
+          <input type="hidden" name="lecture_no" value="{{ request.args.get('lecture_no') }}">
+          <input type="hidden" name="sem" value="{{ request.args.get('sem') }}">
+          <input type="hidden" name="stream" value="{{ request.args.get('stream') }}">
+          <input type="hidden" name="division" value="{{ request.args.get('division') }}">
+          <table>
+            <thead>
+              <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in students %}
+              <tr>
+                <td>{{ s.id }}</td>
+                <td>{{ s.name }}</td>
+                <td>
+                  <select name="status_{{ s.id }}">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                  </select>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <button type="submit" class="btn">Save Attendance</button>
+        </form>
+      {% else %}
+        <p>No students found for selected filters.</p>
+      {% endif %}
+    </div>
+    <link rel="stylesheet" href="styles.css">
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Student Registration</h1>
+  <form method="post" class="form">
+    <label>Full Name
+      <input type="text" name="name" required>
+    </label>
+    <label>Email
+      <input type="email" name="email" required>
+    </label>
+    <label>Password
+      <input type="password" name="password" required>
+    </label>
+    <label>Semester
+      <input type="text" name="sem" placeholder="e.g. 1, 2, 3" required>
+    </label>
+    <label>Stream
+      <input type="text" name="stream" placeholder="e.g. Computer, EC" required>
+    </label>
+    <label>Division
+      <input type="text" name="division" placeholder="A, B, C" required>
+    </label>
+    <button type="submit" class="btn">Register</button>
+  </form>
+  <link rel="stylesheet" href="styles.css">
+{% endblock %}

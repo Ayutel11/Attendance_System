@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Welcome to Super Attendance System</h1>
+  <p>Select your role to continue.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h2>Student</h2>
+      <p>Register and view your attendance.</p>
+      <a class="btn" href="{{ url_for('student_register') }}">Student Register</a>
+      <a class="btn outline" href="{{ url_for('student_login') }}">Student Login</a>
+    </div>
+    <div class="card">
+      <h2>Teacher</h2>
+      <p>Mark attendance for your lectures.</p>
+      <a class="btn" href="{{ url_for('teacher_register') }}">Teacher Register</a>
+      <a class="btn outline" href="{{ url_for('teacher_login') }}">Teacher Login</a>
+    </div>
+  </div>
+  <link rel="stylesheet" href="styles.css">
+{% endblock %}
